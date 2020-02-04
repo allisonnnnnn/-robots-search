@@ -1,4 +1,4 @@
-import { CHANGE_SEARCH_FIELD } from "./constants";
+import { CHANGE_SEARCHFIELD } from "./constants";
 
 // Single source of truth
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 // Reducer pure function
 export const searchRobots = (state = initialState, action = {}) => {
   switch (action.type) {
-    case CHANGE_SEARCH_FIELD:
+    case CHANGE_SEARCHFIELD:
       return Object.assign({}, state, { searchField: action.payload });
     // return { ...state, searchField: action.payload };
     default:
