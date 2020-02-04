@@ -8,6 +8,10 @@ import App from "./containers/App";
 import * as serviceWorker from "./serviceWorker";
 import { searchRobots } from "./reducers";
 
+// via createStore 将 reducer 转换成 store。接著你就可以開始透過 action 操作 state 了
+//store.dispatch({
+// type: 'INCREMENT'
+// });
 const store = createStore(searchRobots);
 
 ReactDOM.render(
