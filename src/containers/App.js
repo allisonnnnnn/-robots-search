@@ -7,19 +7,19 @@ import Scroll from "../components/Scroll";
 import { setSearchField } from "../actions";
 
 // searchField --> initial state will be replaced by (reducer fn name)searchRobots.searchField in reducers.js
-// ？？？searchField is inital state,  state.searchRobots.searchField where does the state come from? (return state from reducer?)
 const mapStateToProps = state => {
+  // state comes from store which takes reducer as parameter, so state comes from reducer
   return { searchField: state.searchField };
 };
 
-// onSearchChange will be reset by mapDispatchToProps
-// setSearchField is the action that be dispatched
 const mapDispatchToProps = dispatch => {
+  // event comes from where the onSearchChange been called
   return {
+    // call onSearchChange 相当于 call dispatch（setSearchField）
+    // dispatch will send the action to reducer, reducer will reduce the action based on action.type, and update the state to return the new state
     onSearchChange: event => dispatch(setSearchField(event.target.value))
   };
 };
-// event comes from the return of reducer (searchRobots)
 
 class App extends Component {
   constructor() {
@@ -63,4 +63,4 @@ class App extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // connect --> higher order fn, which returns another fn.
-// App is the component which need state.
+// App is the component which needs state.
