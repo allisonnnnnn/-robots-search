@@ -1,8 +1,24 @@
-import { CHANGE_SEARCHFIELD } from "./constants";
+import {
+  CHANGE_SEARCHFIELD,
+  REQUEST_ROBOTS_PENDING,
+  REQUEST_ROBOTS_SUCCESS,
+  REQUEST_ROBOTS_FAILD
+} from "./constants";
 
 export const setSearchField = text => ({
   type: CHANGE_SEARCHFIELD,
   payload: text
 });
 
-// is the payload value alwayes the same as the parameter of the action?
+// async promise for fetching data:
+
+export const requestRobots = () => dispatch => {
+  dispatch({ type: REQUEST_ROBOTS_PENDING });
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => {
+      dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data }).catch(error =>
+        dispatch({ type: REQUEST_ROBOTS_FAILD, payload: error })
+      );
+    });
+};
