@@ -23,8 +23,8 @@ const mapDispatchToProps = dispatch => {
     // call onSearchChange 相当于 call dispatch（setSearchField）
     // dispatch will send the action to reducer, reducer will reduce the action based on action.type, and update the state to return the new state
     onSearchChange: event => dispatch(setSearchField(event.target.value)),
-    onRequestRobots: () => requestRobots(dispatch)
-    // onRequestRobots: () => dispatch(requestRobots())
+
+    onRequestRobots: () => dispatch(requestRobots())
   };
 };
 

@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 //helps log which can debug easily
 import { createLogger } from "redux-logger";
-//thunkMiddleware waits a action return a fn instead of object
+//thunkMiddleware handle async situations(fetching data )
 import thunkMiddleware from "redux-thunk";
 
 import "./index.css";
@@ -19,6 +19,7 @@ import { searchRobots, requestRobots } from "./reducers";
 const logger = createLogger();
 
 const rootReducer = combineReducers({ searchRobots, requestRobots });
+
 const store = createStore(
   rootReducer,
   applyMiddleware(thunkMiddleware, logger)

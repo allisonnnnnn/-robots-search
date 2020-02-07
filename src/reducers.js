@@ -2,7 +2,7 @@ import {
   CHANGE_SEARCHFIELD,
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
-  REQUEST_ROBOTS_FAILD
+  REQUEST_ROBOTS_FAILED
 } from "./constants";
 
 // Single source of truth
@@ -36,7 +36,7 @@ export const requestRobots = (state = initialStateRobots, action = {}) => {
       return { ...state, isPending: true };
     case REQUEST_ROBOTS_SUCCESS:
       return { ...state, robots: action.payload, isPending: false };
-    case REQUEST_ROBOTS_FAILD:
+    case REQUEST_ROBOTS_FAILED:
       return { ...state, error: action.payload, isPending: false };
     default:
       return state;
